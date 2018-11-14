@@ -1,0 +1,249 @@
+{{> header title="Support" }}
+
+<body class="text-center">
+  
+  {{> nav }}
+  
+  <div class="container mt-3">
+    <div class="col-xl-10 offset-xl-1 text-left">
+      
+      {{> flash }}
+
+      <div class="row">
+        
+        <div class="container-fluid mt-1 p-3 rounded confirmed-bg text-center">
+          <h1 class="h6 text-center"><strong>Get Subscriptions for Email</strong></h1>
+          <div>
+            <input type="text" id="getSubscriptionsEmail" class="form-control" placeholder="test@test.com"/>
+            <textarea style="resize: none;" type="text" id="getSubscriptionsReason" class="form-control mt-2" placeholder="Required - Enter the reason you're looking up this user's subscriptions."></textarea>
+            <textarea rows="12" type="text" id="getSubscriptionsResult" class="form-control mt-2"></textarea>
+            <button id="getSubscriptionsButton" onclick="getSubscriptions();" class="btn confirmed-blue-btn btn-sm mt-2" style="width: 50%;">Submit</button>
+          </div>
+        </div>
+        
+        <div class="container-fluid mt-1 p-3 rounded confirmed-bg text-center">
+          <h1 class="h6 text-center"><strong>Get User for Email</strong></h1>
+          <div>
+            <input type="text" id="getUserEmail" class="form-control" placeholder="test@test.com"/>
+            <textarea style="resize: none;" type="text" id="getUserReason" class="form-control mt-2" placeholder="Required - Enter the reason you're looking up this user's info."></textarea>
+            <textarea rows="12" type="text" id="getUserResult" class="form-control mt-2"></textarea>
+            <button id="getUserButton" onclick="getUser();" class="btn confirmed-blue-btn btn-sm mt-2" style="width: 50%;">Submit</button>
+          </div>
+        </div>
+        
+        <div class="col-xl-4 col-md-6 col-xs-12 text-left mt-3 p-3 confirmed-bg">
+          <h1 class="h6 text-center"><strong>Get Hashed Email</strong></h1>
+          <div>
+            <div style="font-size: 12px;">Email to Hash</div>
+            <input type="text" id="getHashedEmailEmail" class="form-control" placeholder="test@test.com"/>
+            <textarea style="resize: none;" type="text" id="getHashedEmailReason" class="form-control mt-2" placeholder="Required - Enter the reason you're looking up the email hash."></textarea>
+            <button onclick="document.getElementById('getHashedEmailEmail').value='';document.getElementById('getHashedEmailReason').value='';" class="btn confirmed-gray-btn btn-sm mt-2" style="width: 49%;">Clear</button>
+            <button id="getHashedEmailButton" onclick="getHashedEmail();" class="btn confirmed-blue-btn btn-sm mt-2" style="width: 49%;">Submit</button>
+            <input type="text" id="getHashedEmailResult" class="form-control mt-2" placeholder="Result Appears Here" readonly="readonly"/>
+            <button onclick="document.getElementById('getHashedEmailResult').select(); document.execCommand('Copy'); alert('Copied');" class="btn confirmed-blue-btn btn-sm mt-2 btn-block">Copy to Clipboard</button>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-6 col-xs-12 text-left mt-3 p-3 confirmed-bg">
+          <h1 class="h6 text-center"><strong>Get Email</strong></h1>
+          <div>
+            <div style="font-size: 12px;">With Stripe ID</div>
+            <input type="text" id="getEmailWithStripeIdStripeId" class="form-control" placeholder="cus_a1234567890"/>
+            <textarea style="resize: none;" type="text" id="getEmailWithStripeIdReason" class="form-control mt-2" placeholder="Required - Enter the reason you're looking up the email."></textarea>
+            <button onclick="document.getElementById('getEmailWithStripeIdStripeId').value='';document.getElementById('getEmailWithStripeIdReason').value='';" class="btn confirmed-gray-btn btn-sm mt-2" style="width: 49%;">Clear</button>
+            <button id="getEmailWithStripeIdButton" onclick="getEmailWithStripeId();" class="btn confirmed-blue-btn btn-sm mt-2" style="width: 49%;">Submit</button>
+            <input type="text" id="getEmailWithStripeIdResult" class="form-control mt-2" placeholder="Result Appears Here" readonly="readonly"/>
+            <button onclick="document.getElementById('getEmailWithStripeIdResult').select(); document.execCommand('Copy'); alert('Copied');" class="btn confirmed-blue-btn btn-sm mt-2 btn-block">Copy to Clipboard</button>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-6 col-xs-12 text-left mt-3 p-3 confirmed-bg">
+          <h1 class="h6 text-center"><strong>Get Stripe ID</strong></h1>
+          <div>
+            <div style="font-size: 12px;">With Email</div>
+            <input type="text" id="getStripeIdWithEmailEmail" class="form-control" placeholder="test@test.com"/>
+            <textarea style="resize: none;" type="text" id="getStripeIdWithEmailReason" class="form-control mt-2" placeholder="Required - Enter the reason you're looking up the Stripe ID."></textarea>
+            <button onclick="document.getElementById('getStripeIdWithEmailStripeId').value='';document.getElementById('getStripeIdWithEmailReason').value='';" class="btn confirmed-gray-btn btn-sm mt-2" style="width: 49%;">Clear</button>
+            <button id="getStripeIdWithEmailButton" onclick="getStripeIdWithEmail();" class="btn confirmed-blue-btn btn-sm mt-2" style="width: 49%;">Submit</button>
+            <input type="text" id="getStripeIdWithEmailResult" class="form-control mt-2" placeholder="Result Appears Here" readonly="readonly"/>
+            <button onclick="document.getElementById('getStripeIdWithEmailResult').select(); document.execCommand('Copy'); alert('Copied');" class="btn confirmed-blue-btn btn-sm mt-2 btn-block">Copy to Clipboard</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-xl-4 col-md-6 col-xs-12 text-left mt-3 p-3 confirmed-bg">
+          <h1 class="h6 text-center"><strong>Get Email</strong></h1>
+          <div>
+            <div style="font-size: 12px;">With User ID</div>
+            <input type="text" id="getEmailWithUserIdUserId" class="form-control"/>
+            <textarea style="resize: none;" type="text" id="getEmailWithUserIdReason" class="form-control mt-2" placeholder="Required - Enter the reason you're looking up the email."></textarea>
+            <button onclick="document.getElementById('getEmailWithUserIdUserId').value='';document.getElementById('getEmailWithUserIdReason').value='';" class="btn confirmed-gray-btn btn-sm mt-2" style="width: 49%;">Clear</button>
+            <button id="getEmailWithUserIdButton" onclick="getEmailWithUserId();" class="btn confirmed-blue-btn btn-sm mt-2" style="width: 49%;">Submit</button>
+            <input type="text" id="getEmailWithUserIdResult" class="form-control mt-2" placeholder="Result Appears Here" readonly="readonly"/>
+            <button onclick="document.getElementById('getEmailWithUserIdResult').select(); document.execCommand('Copy'); alert('Copied');" class="btn confirmed-blue-btn btn-sm mt-2 btn-block">Copy to Clipboard</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-6 offset-xl-3 col-xs-12 text-left">
+  		  <div class="container-fluid mt-3 p-3 rounded confirmed-bg">
+          <h1 class="h6 text-center">Your Account</h1>
+          <a href="/change-password" class="btn confirmed-blue-btn btn-sm btn-block">Change Password</a>
+        </div>
+      </div>
+  
+    </div> <!-- column -->
+  </div> <!-- row -->
+  
+  {{> footer}}
+
+  {{> bootstrapjs}}
+  
+  <script>
+    
+    function getSubscriptions() {
+      if (confirm("This will send an email to alert the customer that you're looking up their subscriptions. Proceed?")) {
+        document.getElementById("getSubscriptionsButton").disabled = true;
+        document.getElementById("getSubscriptionsResult").value = "";
+    		var http = new XMLHttpRequest();
+    		var url = "get-subscriptions-with-email";
+    		http.open("POST", url, true);
+      	var params = "email=" + document.getElementById("getSubscriptionsEmail").value + "&reason=" + document.getElementById("getSubscriptionsReason").value;
+        http.responseType = 'json';
+    		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    		http.onreadystatechange = function() {
+    		    if (http.readyState == 4) {
+              document.getElementById("getSubscriptionsButton").disabled = false;
+      				if (http.status == 200) {
+                document.getElementById("getSubscriptionsResult").value = http.response.subscriptions;
+                return;
+      				}
+              alert("Error: " + JSON.stringify(http.response));
+    		    }
+    		}
+    		http.send(params);
+      }
+    }
+    
+    function getUser() {
+      if (confirm("This will send an email to alert the customer that you're looking up their user information. Proceed?")) {
+        document.getElementById("getUserButton").disabled = true;
+        document.getElementById("getUserResult").value = "";
+    		var http = new XMLHttpRequest();
+    		var url = "get-user-with-email";
+    		http.open("POST", url, true);
+      	var params = "email=" + document.getElementById("getUserEmail").value + "&reason=" + document.getElementById("getUserReason").value;
+        http.responseType = 'json';
+    		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    		http.onreadystatechange = function() {
+    		    if (http.readyState == 4) {
+              document.getElementById("getUserButton").disabled = false;
+      				if (http.status == 200) {
+                document.getElementById("getUserResult").value = http.response.subscriptions;
+                return;
+      				}
+              alert("Error: " + JSON.stringify(http.response));
+    		    }
+    		}
+    		http.send(params);
+      }
+    }
+    
+    function getStripeIdWithEmail() {
+      if (confirm("This will send an email to alert the customer that you're looking up their Stripe ID. Proceed?")) {
+        document.getElementById("getStripeIdWithEmailButton").disabled = true;
+        document.getElementById("getStripeIdWithEmailResult").value = "";
+    		var http = new XMLHttpRequest();
+    		var url = "get-stripe-id-with-email";
+    		http.open("POST", url, true);
+      	var params = "email=" + document.getElementById("getStripeIdWithEmailEmail").value + "&reason=" + document.getElementById("getStripeIdWithEmailReason").value;
+        http.responseType = 'json';
+    		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    		http.onreadystatechange = function() {
+    		    if (http.readyState == 4) {
+              document.getElementById("getStripeIdWithEmailButton").disabled = false;
+      				if (http.status == 200) {
+                document.getElementById("getStripeIdWithEmailResult").value = http.response.stripeId;
+                return;
+      				}
+              alert("Error: " + JSON.stringify(http.response));
+    		    }
+    		}
+    		http.send(params);
+      }
+    }
+    
+    function getEmailWithStripeId() {
+      if (confirm("This will send an email to alert the customer that you're looking up their email. Proceed?")) {
+        document.getElementById("getEmailWithStripeIdButton").disabled = true;
+        document.getElementById("getEmailWithStripeIdResult").value = "";
+    		var http = new XMLHttpRequest();
+    		var url = "get-email-with-stripe-id";
+    		http.open("POST", url, true);
+      	var params = "stripeId=" + document.getElementById("getEmailWithStripeIdStripeId").value + "&reason=" + document.getElementById("getEmailWithStripeIdReason").value;
+        http.responseType = 'json';
+    		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    		http.onreadystatechange = function() {
+    		    if (http.readyState == 4) {
+              document.getElementById("getEmailWithStripeIdButton").disabled = false;
+      				if (http.status == 200) {
+                document.getElementById("getEmailWithStripeIdResult").value = http.response.email;
+                return;
+      				}
+              alert("Error: " + JSON.stringify(http.response));
+    		    }
+    		}
+    		http.send(params);
+      }
+    }
+    
+    function getEmailWithUserId() {
+      if (confirm("This will send an email to alert the customer that you're looking up their email. Proceed?")) {
+        document.getElementById("getEmailWithUserIdButton").disabled = true;
+        document.getElementById("getEmailWithUserIdResult").value = "";
+    		var http = new XMLHttpRequest();
+    		var url = "get-email-with-user-id";
+    		http.open("POST", url, true);
+      	var params = "userId=" + document.getElementById("getEmailWithUserIdUserId").value + "&reason=" + document.getElementById("getEmailWithUserIdReason").value;
+        http.responseType = 'json';
+    		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    		http.onreadystatechange = function() {
+    		    if (http.readyState == 4) {
+              document.getElementById("getEmailWithUserIdButton").disabled = false;
+      				if (http.status == 200) {
+                document.getElementById("getEmailWithUserIdResult").value = http.response.email;
+                return;
+      				}
+              alert("Error: " + JSON.stringify(http.response));
+    		    }
+    		}
+    		http.send(params);
+      }
+    }
+    
+    function getHashedEmail() {
+      if (confirm("This will send an email to alert the customer that you're looking up their hashed email. Proceed?")) {
+        document.getElementById("getHashedEmailButton").disabled = true;
+        document.getElementById("getHashedEmailResult").value = "";
+    		var http = new XMLHttpRequest();
+    		var url = "get-hashed-email";
+    		http.open("POST", url, true);
+      	var params = "email=" + document.getElementById("getHashedEmailEmail").value + "&reason=" + document.getElementById("getHashedEmailReason").value;
+        http.responseType = 'json';
+    		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    		http.onreadystatechange = function() {
+    		    if (http.readyState == 4) {
+              document.getElementById("getHashedEmailButton").disabled = false;
+      				if (http.status == 200) {
+                document.getElementById("getHashedEmailResult").value = http.response.hashedEmail;
+                return;
+      				}
+              alert("Error: " + JSON.stringify(http.response));
+    		    }
+    		}
+    		http.send(params);
+      }
+    }
+
+  </script>
+  
+</body>

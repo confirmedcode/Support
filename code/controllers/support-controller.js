@@ -126,7 +126,7 @@ router.post("/get-hashed-email",
     })
     .then(success => {
       // Return hashed email to support
-      var hashedEmail = Secure.hashEmail(email, EMAIL_SALT);
+      var hashedEmail = Secure.hashSha512(email, EMAIL_SALT);
       response.status(200).json({
         hashedEmail: hashedEmail
       });

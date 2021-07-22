@@ -31,7 +31,7 @@ app.use(expressWinston.logger({
       || reqUrl.startsWith("/favicon.ico")
       || reqUrl.startsWith("/health")) {
         return true;
-      } 
+      }
       return false;
   }
 }));
@@ -64,6 +64,7 @@ if (NODE_ENV === "production") {
 // Controllers
 app.use("/", require("./controllers/support-controller.js"));
 app.use("/", require("./controllers/notification-controller.js"));
+app.use("/", require("./controllers/reviews-controller.js"));
 app.use("/", require("./controllers/signin-controller.js"));
 app.use("/", require("./controllers/signup-controller.js"));
 
@@ -77,9 +78,9 @@ app.get("/health", function(request, response, next) {
 	});
 });
 
-app.get("/", (request, response, next) => {  
+app.get("/", (request, response, next) => {
   if (request.session && request.session.userEmail) {
-    response.redirect("/admin");
+    response.redirect("/support");
   }
   else {
     response.redirect("/signin");

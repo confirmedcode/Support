@@ -280,6 +280,53 @@ router.post("/get-stripe-id-with-email",
 
 /*********************************************
  *
+ * Delete User
+ *
+ *********************************************/
+
+router.post("/delete-user-with-email",
+[
+  authenticate,
+  body("email")
+  .exists().withMessage("Missing email address.")
+  .isEmail().withMessage("Invalid email address.")
+  .normalizeEmail(),
+  body("reason")
+  .exists().withMessage("A reason for deletion is required.")
+  .not().isEmpty().withMessage("A reason for deletion is required."),
+  body("banned")
+  .isBoolean(),
+  validateCheck
+],
+(request, response, next) => {
+  var email = request.values.email;
+  var reason = request.values.reason;
+  var banned = request.values.banned;
+
+  // Check that we do have this email in the database
+  return User.getWithEmail(email, "id, stripe_id, create_date, referred_by, delete_date, delete_reason, banned, month_usage_megabytes, month_usage_update, email_confirmed, do_not_email", true)
+    .then(user => {
+      // Send email alert to user
+      return Email.sendAuditAlert(email, "Delete user account and cancel all desktop subscriptions. Any iOS/Android subscriptions must be cancelled separately using the app store.", reason)
+      .then(success => {
+        // Delete the user
+        return user.delete(reason, banned);
+      })
+      .then(success => {
+        Email.sendAdminAlert(`Deleted user: ${email}`,
+        `Deleted user: ${email}
+        Requestor IP: ${request.ip}
+        Time: ${new Date()}`);
+        response.status(200).json({
+          message: "Deleted user successfully. Any iOS/Android subscriptions must be deleted separately."
+        });
+      });
+    })
+    .catch(error => { next(error); });
+});
+
+/*********************************************
+ *
  * Change Password
  *
  *********************************************/

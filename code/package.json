@@ -26,7 +26,7 @@
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
     "shared": "file:../../shared",
-    "validator": "^9.1.1",
+    "validator": "^13.7.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {

@@ -185,7 +185,7 @@
         var http = new XMLHttpRequest();
         var url = "delete-user-with-email";
         http.open("POST", url, true);
-        var params = "email=" + document.getElementById("deleteUserWithEmailEmail").value + "&reason=" + document.getElementById("deleteUserWithEmailReason").value + "&banned=" + document.getElementById("deleteUserWithEmailBanned").checked;
+        var params = "email=" + encodeURIComponent(document.getElementById("deleteUserWithEmailEmail").value) + "&reason=" + document.getElementById("deleteUserWithEmailReason").value + "&banned=" + document.getElementById("deleteUserWithEmailBanned").checked;
         http.responseType = 'json';
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         http.onreadystatechange = function() {
@@ -209,7 +209,7 @@
         var http = new XMLHttpRequest();
         var url = "get-subscriptions-with-email";
         http.open("POST", url, true);
-        var params = "email=" + document.getElementById("getSubscriptionsEmail").value + "&reason=" + document.getElementById("getSubscriptionsReason").value;
+        var params = "email=" + encodeURIComponent(document.getElementById("getSubscriptionsEmail").value) + "&reason=" + document.getElementById("getSubscriptionsReason").value;
         http.responseType = 'json';
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         http.onreadystatechange = function () {
@@ -234,7 +234,7 @@
         var http = new XMLHttpRequest();
         var url = "get-active-subscriptions-with-email";
         http.open("POST", url, true);
-        var params = "email=" + document.getElementById("getActiveSubscriptionsEmail").value + "&reason=" + document.getElementById("getActiveSubscriptionsReason").value;
+        var params = "email=" + encodeURIComponent(document.getElementById("getActiveSubscriptionsEmail").value) + "&reason=" + document.getElementById("getActiveSubscriptionsReason").value;
         http.responseType = 'json';
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         http.onreadystatechange = function () {
@@ -258,7 +258,7 @@
         var http = new XMLHttpRequest();
         var url = "get-user-with-email";
         http.open("POST", url, true);
-        var params = "email=" + document.getElementById("getUserEmail").value + "&reason=" + document.getElementById("getUserReason").value;
+        var params = "email=" + encodeURIComponent(document.getElementById("getUserEmail").value) + "&reason=" + document.getElementById("getUserReason").value;
         http.responseType = 'json';
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         http.onreadystatechange = function () {
@@ -282,7 +282,7 @@
         var http = new XMLHttpRequest();
         var url = "get-stripe-id-with-email";
         http.open("POST", url, true);
-        var params = "email=" + document.getElementById("getStripeIdWithEmailEmail").value + "&reason=" + document.getElementById("getStripeIdWithEmailReason").value;
+        var params = "email=" + encodeURIComponent(document.getElementById("getStripeIdWithEmailEmail").value) + "&reason=" + document.getElementById("getStripeIdWithEmailReason").value;
         http.responseType = 'json';
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         http.onreadystatechange = function () {
@@ -354,7 +354,7 @@
         var http = new XMLHttpRequest();
         var url = "get-hashed-email";
         http.open("POST", url, true);
-        var params = "email=" + document.getElementById("getHashedEmailEmail").value + "&reason=" + document.getElementById("getHashedEmailReason").value;
+        var params = "email=" + encodeURIComponent(document.getElementById("getHashedEmailEmail").value) + "&reason=" + document.getElementById("getHashedEmailReason").value;
         http.responseType = 'json';
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         http.onreadystatechange = function () {

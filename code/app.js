@@ -46,7 +46,7 @@ process.on("unhandledRejection", error => {
 app.use(require("helmet")());
 
 // View Engine
-app.engine(".hbs", require("express-handlebars")({
+app.engine(".hbs", require("express-handlebars").engine({
   defaultLayout: "main",
   extname: ".hbs",
   partialsDir: __dirname + "/views/partials/"
